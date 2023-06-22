@@ -39,3 +39,9 @@ pub async fn note_list_handler(
     });
     HttpResponse::Ok().json(json_response)
 }
+
+#[post("/notes/")]
+async fn create_note_handler(
+    body: web::Json<CreateNoteSchema>,
+    data: web::Data<AppState>,
+) -> impl Responder {}
