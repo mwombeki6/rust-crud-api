@@ -7,6 +7,13 @@ use actix_web::{delete, get, patch, post, web, HttpResponse, Responder};
 use chrono::prelude::*;
 use serde_json::json;
 
+#[get("/api/healthchecker")]
+async fn health_checker_handler() -> impl Responder {
+    const MESSAGE: &str = "Build Simple CRUD API with Rust, SQLX, Postgres and Actix Web";
+
+    HttpResponse::Ok().json(json!({"status": "success", "message": MESSAGE}))
+}
+
 #[get("/notes")]
 pub async fn note_list_handler(
     opts: web::Query<FilterOptions>,
