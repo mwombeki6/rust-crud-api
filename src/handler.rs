@@ -53,7 +53,7 @@ async fn create_note_handler(
     data: web::Data<AppState>,
 ) -> impl Responder {
     let query_result = sqlx::query_as!(
-        NotesModel,
+        NoteModel,
         "INSERT INTO notes (title,content,category) VALUES ($1, $2, $3) RETURNING *",
         body.title.to_string(),
         body.content.to_string(),
